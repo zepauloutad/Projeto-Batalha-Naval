@@ -25,4 +25,3 @@ public:
 	bool operator == (const PontoNaval ponto) const;
 	bool operator != (const PontoNaval ponto) const;
 };
-

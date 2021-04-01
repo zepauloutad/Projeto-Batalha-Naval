@@ -7,18 +7,13 @@
 using namespace std;
 int main()
 {
-    cout << "Aula 4!\n";
-     PontoNaval P1, P2(5, 'B');
-    Board B;
+	PontoNaval P1, P2(5, 'B');
+	Board B;
 
-    P1.Show();
-    P2.Show();
-    cout << endl;
-    B.SimbiBoxLisrDraw();
-    cout << endl;
-    B.SetCell(2, 3, 'O');
-    B.SetCell(7, 6, 'O');
-    B.Draw(5, 4);
-    cout << endl;
-    system("pause");
+	P1.Show();
+	P2.Show();
+	B.SetCell(2, 3, 'O');
+	B.SetCell(7, 6, 'O');
+	B.Draw(5, 4);
+	system("pause");
 }
