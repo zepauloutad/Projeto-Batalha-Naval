@@ -4,7 +4,6 @@
 #include <string.h>
 
 using namespace std;
-
 #define N 10
 
 PontoNaval::PontoNaval()
@@ -82,7 +81,6 @@ void PontoNaval::Show(void)
 int PontoNaval::GetIntY(void) const
 {
 	int aux;
-
 	aux = int(y) - 64;
 	return aux;
 }

@@ -51,6 +51,14 @@ void Board::SimbiBoxLisrDraw()
 		}
 	}
 }
+
+int Board::DrawLetter(int contador)
+{
+	
+	cout << char (contador+65);
+	return contador + 1;
+}
+
 void Board::DrawFirstLine(int x0, int dxcel)
 {
 	int i, j;
@@ -69,27 +77,28 @@ void Board::DrawFirstLine(int x0, int dxcel)
 	}
 	cout << (char)191;
 }
-void Board::DrawDataLine(int x0, int dxcel, int nc)
+
+int Board::DrawDataLine(int x0, int dxcel, int nc, int contador)
 {
-	int i;
-
-	for (i = 0; i < x0; i++)
+	int i = 0;
+	
+	for (i = 0; i < x0-1; i++)
 		cout << " ";
-
+	 DrawLetter(contador);
 	for (i = 1; i <= GetDimX(); i++)
 	{
 		cout << (char)179;
 		cout << " " << GetCell(nc, i) << " ";
 	}
 	cout << (char)179;
+	return contador + 1;
 }
+
 void Board::DrawMiddleLine(int x0, int dxcel)
 {
-	int i, j;
-
+	int i = 0, j = 0;
 	for (i = 0; i < x0; i++)
 		cout << " ";
-
 	cout << (char)195;
 	for (i = 0; i < GetDimX(); i++)
 	{
@@ -101,6 +110,7 @@ void Board::DrawMiddleLine(int x0, int dxcel)
 	}
 	cout << (char)180;
 }
+
 void Board::DrawLastLine(int x0, int dxcel)
 {
 	int i = 0, j = 0;
@@ -118,18 +128,19 @@ void Board::DrawLastLine(int x0, int dxcel)
 	}
 	cout << (char)217;
 }
+
 void Board::Draw(int x0, int y0)
 {
 	int dxcel = 3;
 	int line;
-
+	int contData = 0;
 	for (line = 1; line < y0; line++)
 		cout << endl;
 
 	// Draw first line
 	DrawFirstLine(x0, dxcel);
 	cout << endl;
-	DrawDataLine(x0, dxcel, 1);
+	contData = DrawDataLine(x0, dxcel, 1, contData);
 	cout << endl;
 
 	// Draw middle lines
@@ -137,11 +148,48 @@ void Board::Draw(int x0, int y0)
 	{
 		DrawMiddleLine(x0, dxcel);
 		cout << endl;
-		DrawDataLine(x0, dxcel, line + 1);
+		contData = DrawDataLine(x0, dxcel, line + 1, contData);
 		cout << endl;
 	}
 
 	// Draw last line
 	DrawLastLine(x0, dxcel);
+}
+
+void Board::DrawNext(Board B,int x0, int y0, int space)
+{
+	int dxcel = 3;
+	int line;
+	int i = 0;
+	int contData = 0;
+	DrawFirstLine(x0, dxcel);
+	for (i = 0; i < space; i++)
+		cout << " ";
+	B.DrawFirstLine(x0, dxcel);
+	cout << endl;
+	contData = DrawDataLine(x0, dxcel, 1, contData);
+	for (i = 0; i < space; i++)
+		cout << " ";
+	contData =  B.DrawDataLine(x0, dxcel, 1, contData-1);
+	cout << endl;
+	for (line = 1; line < GetDimY(); line++)
+	{
+		DrawMiddleLine(x0, dxcel);
+		for (i = 0; i < space; i++)
+			cout << " ";
+			B.DrawMiddleLine(x0, dxcel);
+		cout << endl;
+		contData = DrawDataLine(x0, dxcel, line + 1, contData);
+		for (i = 0; i < space; i++)
+			cout << " ";
+		contData = B.DrawDataLine(x0, dxcel, line + 1, contData-1);
+		cout << endl;
+	}
+	DrawLastLine(x0, dxcel);
+	for (i = 0; i < space; i++)
+		cout << " ";
+	B.DrawLastLine(x0, dxcel);
 	cout << endl << endl;
 }
+
+

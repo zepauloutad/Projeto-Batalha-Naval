@@ -8,12 +8,13 @@ using namespace std;
 int main()
 {
 	PontoNaval P1, P2(5, 'B');
-	Board B;
-
-	P1.Show();
-	P2.Show();
+	Board B, C;
+	int i = 0;
+	cout << endl << endl << endl << endl;
 	B.SetCell(2, 3, 'O');
 	B.SetCell(7, 6, 'O');
-	B.Draw(5, 4);
+	B.DrawNext(C,5, 4,5);
+
+	
 	system("pause");
 }

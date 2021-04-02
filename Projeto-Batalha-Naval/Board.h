@@ -1,4 +1,3 @@
-#pragma once
 class Board
 {
 private:
@@ -18,10 +17,11 @@ public:
 	char GetCell(int i, int j) { return M[i - 1][j - 1]; }
 
 	void SimbiBoxLisrDraw();
-
+	int DrawLetter(int contador);
 	void DrawFirstLine(int x0, int dxcel);
 	void DrawMiddleLine(int x0, int dxcel);
 	void DrawLastLine(int x0, int dxcel);
-	void DrawDataLine(int x0, int dxcel, int line);
+	int DrawDataLine(int x0, int dxcel, int line, int contador);
 	void Draw(int x0, int y0);
+	void DrawNext(Board B ,int x0, int y0, int space);
 };
