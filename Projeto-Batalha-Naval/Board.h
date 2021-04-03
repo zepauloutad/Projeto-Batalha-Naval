@@ -23,5 +23,5 @@ public:
 	void DrawLastLine(int x0, int dxcel);
 	int DrawDataLine(int x0, int dxcel, int line, int contador);
 	void Draw(int x0, int y0);
-	void DrawNext(Board B ,int x0, int y0, int space);
+	void DrawNext(Board B ,int x0, int spaceTop, int space);
 };

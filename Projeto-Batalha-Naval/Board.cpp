@@ -65,10 +65,10 @@ void Board::DrawFirstLine(int x0, int dxcel)
 
 	for (i = 0; i < x0; i++)
 		cout << " ";
-
 	cout << (char)218;
 	for (i = 0; i < GetDimX(); i++)
 	{
+		
 		for (j = 0; j < dxcel; j++)
 			cout << (char)196;
 
@@ -156,37 +156,49 @@ void Board::Draw(int x0, int y0)
 	DrawLastLine(x0, dxcel);
 }
 
-void Board::DrawNext(Board B,int x0, int y0, int space)
+void Board::DrawNext(Board B,int x0, int spaceTop, int spaceTables)
 {
 	int dxcel = 3;
 	int line;
 	int i = 0;
 	int contData = 0;
+	
+	for (line = 0; line < spaceTop; line++)
+		cout << endl;
+	for (i = 0; i < x0-1; i++)
+		cout << " ";
+	for (i = 0; i < GetDimX(); i++)
+		cout << "   "<< i + 1;
+	for (i = 0; i < spaceTables +5; i++)
+		cout << " ";
+	for (i = 0; i < GetDimX(); i++)
+		cout << "   " << i + 1;
+	cout << '\n';
 	DrawFirstLine(x0, dxcel);
-	for (i = 0; i < space; i++)
+	for (i = 0; i < spaceTables; i++)
 		cout << " ";
 	B.DrawFirstLine(x0, dxcel);
 	cout << endl;
 	contData = DrawDataLine(x0, dxcel, 1, contData);
-	for (i = 0; i < space; i++)
+	for (i = 0; i < spaceTables; i++)
 		cout << " ";
 	contData =  B.DrawDataLine(x0, dxcel, 1, contData-1);
 	cout << endl;
 	for (line = 1; line < GetDimY(); line++)
 	{
 		DrawMiddleLine(x0, dxcel);
-		for (i = 0; i < space; i++)
+		for (i = 0; i < spaceTables; i++)
 			cout << " ";
 			B.DrawMiddleLine(x0, dxcel);
 		cout << endl;
 		contData = DrawDataLine(x0, dxcel, line + 1, contData);
-		for (i = 0; i < space; i++)
+		for (i = 0; i < spaceTables; i++)
 			cout << " ";
 		contData = B.DrawDataLine(x0, dxcel, line + 1, contData-1);
 		cout << endl;
 	}
 	DrawLastLine(x0, dxcel);
-	for (i = 0; i < space; i++)
+	for (i = 0; i < spaceTables; i++)
 		cout << " ";
 	B.DrawLastLine(x0, dxcel);
 	cout << endl << endl;
